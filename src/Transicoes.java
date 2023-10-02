@@ -9,11 +9,11 @@ public class Transicoes {
 
     public Transicoes() {
         currentState = "q0";
-        finalStates.add("qF");
-        transitions.put("q0", Map.of('a', "q1", 'b', "q2"));
-        transitions.put("q1", Map.of('a', "qf", 'b', "q2"));
-        transitions.put("q2", Map.of('a', "q1", 'b', "qf"));
-        transitions.put("qf", Map.of('a', "qf", 'b', "qf"));
+        finalStates.add("qf");
+        transitions.put("q0", Map.of('a', "q1", 'b', "q0", 'c', "q0" ));
+        transitions.put("q1", Map.of('a', "q2", 'b', "q1", 'c', "q1" ));
+        transitions.put("q2", Map.of('a', "q2", 'b', "qf", 'c', "q0"));
+        transitions.put("qf", Map.of('a', "qf", 'b', "qf", 'c', "qf"));
     }
 
     public boolean transicao(char entry) {
