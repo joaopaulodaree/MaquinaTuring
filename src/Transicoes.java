@@ -15,9 +15,9 @@ public class Transicoes {
         transitions.put("q2", Map.of('a', "q1", 'b', "qf"));
         transitions.put("qf", Map.of('a', "qf", 'b', "qf"));
     }
-    public boolean transicao(char entrada) {
-        if (transicoes.get(currentState).containsKey(entrada)) {
-            currentState = transicoes.get(currentState).get(entrada);
+    public boolean transicao(char entry) {
+        if (transitions.get(currentState).containsKey(entry)) {
+            currentState = transitions.get(currentState).get(entry);
             return true;
         } else {
             currentState = null;
@@ -28,6 +28,5 @@ public class Transicoes {
     public String getCurrentState(){
         return currentState;
     }
-
 
 }
