@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class MaquinaTuring {
-    private String tape;
-    private int position;
     private String currentState;
     private Transicoes transitions;
     private ArrayList<String> finalStates = transitions.getFinalStates();

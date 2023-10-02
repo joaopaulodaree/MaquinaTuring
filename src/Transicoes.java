@@ -7,7 +7,7 @@ public class Transicoes {
     private String currentState;
     private ArrayList<String> finalStates = new ArrayList<>();
 
-    public Transicoes(){
+    public Transicoes() {
         currentState = "q0";
         finalStates.add("qF");
         transitions.put("q0", Map.of('a', "q1", 'b', "q2"));
@@ -15,6 +15,7 @@ public class Transicoes {
         transitions.put("q2", Map.of('a', "q1", 'b', "qf"));
         transitions.put("qf", Map.of('a', "qf", 'b', "qf"));
     }
+
     public boolean transicao(char entry) {
         if (transitions.get(currentState).containsKey(entry)) {
             currentState = transitions.get(currentState).get(entry);
@@ -25,7 +26,11 @@ public class Transicoes {
         }
     }
 
-    public String getCurrentState(){
+    public ArrayList<String> getFinalStates() {
+        return finalStates;
+    }
+
+    public String getCurrentState() {
         return currentState;
     }
 
