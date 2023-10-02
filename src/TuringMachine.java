@@ -5,30 +5,24 @@ public class TuringMachine {
     private Map<String, Map<Character, Transition>> transitions = new HashMap<>();
 
     public TuringMachine() {
-        transitions.put("q0", Map.of(
-            'B', new Transition("qf", 'B', 'R'),
-            'a', new Transition("q1", 'B', 'R')
-        ));
-        
-        transitions.put("q1", Map.of(
-            'a', new Transition("q1", 'a', 'R'),
-            'b', new Transition("q1", 'b', 'R'),
-            'B', new Transition("q2", 'B', 'L')
-        ));
-        
-        transitions.put("q2", Map.of(
-            'b', new Transition("q3", 'B', 'L')
-        ));
+        createTransition("q0", 'B', "qf", 'B', 'R');
+        createTransition("q0", 'a', "q1", 'B', 'R');
 
-        transitions.put("q3", Map.of(
-            'b', new Transition("q4", 'B', 'L')
-        ));
-        
-        transitions.put("q4", Map.of(
-            'a', new Transition("q4", 'a', 'L'),
-            'b', new Transition("q4", 'b', 'L'),
-            'B', new Transition("qf", 'B', 'R')
-        ));
+        createTransition("q1", 'a', "q1", 'a', 'R');
+        createTransition("q1", 'b', "q1", 'b', 'R');
+        createTransition("q1", 'B', "q2", 'B', 'L');
+
+        createTransition("q2", 'b', "q3", 'B', 'L');
+
+        createTransition("q3", 'b', "q4", 'B', 'L');
+
+        createTransition("q4", 'a', "q4", 'a', 'L');
+        createTransition("q4", 'b', "q4", 'b', 'L');
+        createTransition("q4", 'B', "qf", 'B', 'R');
+    }
+
+    private void createTransition(String state, char symbol, String nextState, char writeSymbol, char direction){
+        transitions.computeIfAbsent(state, k -> new HashMap<>()).put(symbol, new Transition(nextState, writeSymbol, direction));
     }
 
     public void processInput(String input) {
