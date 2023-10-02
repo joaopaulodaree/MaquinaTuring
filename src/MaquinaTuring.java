@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class MaquinaTuring {
     private String currentState;
     private Transicoes transitions;
-    private ArrayList<String> finalStates;
+    private String tape;
+    private int position;
 
     public MaquinaTuring() {
         transitions = new Transicoes();
-        finalStates = transitions.getFinalStates();
         currentState = transitions.getCurrentState();
     }
 
@@ -19,7 +19,7 @@ public class MaquinaTuring {
             }
         }
         currentState = transitions.getCurrentState();
-        
+
         if (currentState.equals("qf"))
             System.out.println("A Palavra " + palavra + " foi aceita!");
         else
